@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "node",
+        "baseUrl": "src",
+        "outDir": "dist",
+        "sourceMap": true,
+        "target": "ES2020",
+        "noImplicitAny": true,
+        "paths": {
+            "@services/*": ["services/*"]
+        }
+    },
+    "include": ["src", "config"]
+}
