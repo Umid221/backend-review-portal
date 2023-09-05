@@ -28,3 +28,31 @@ enum RoleEnumType {
   user
   admin
 }
+
+model Review {
+  id          Int     @id @default(autoincrement())
+  userId      Int
+  name        String
+  reviewedArt String
+  groupId     Int
+  group       Group   @relation(fields: [groupId], references: [id])
+  tags        Tag[]   @relation("ReviewTags")
+  reviewText  String
+  image       String?
+  grade       Int
+}
+
+model Group {
+  // movies
+  // books
+  // games
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  reviews Review[]
+}
+
+model Tag {
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  reviews Review[] @relation("ReviewTags")
+}

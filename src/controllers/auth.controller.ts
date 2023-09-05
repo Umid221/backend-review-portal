@@ -1,8 +1,7 @@
-import { signTokens } from "./../services/user.service";
+import { signTokens } from "@services/user.service";
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import { createUser, getUser } from "@services/user.service";
-import { signJwt } from "utils/jwt";
 
 export const registerUserHandler = async (req: Request, res: Response) => {
     const { fullName, email, password } = req.body;
@@ -35,12 +34,12 @@ export const loginHandler = async (req: Request, res: Response) => {
     try {
         const user = await getUser({ email }, { password: true });
         if (!user) {
-            return res.status(401).json({ message: "Invalid email" });
+            return res.status(401).json({ message: "invalidEmail" });
         }
 
         const match = await bcrypt.compare(password, user.password);
         if (!match) {
-            return res.status(401).json({ message: "Invalid password" });
+            return res.status(401).json({ message: "invalidPassword" });
         }
 
         const { accessToken, refreshToken } = signTokens(user);
@@ -51,4 +50,8 @@ export const loginHandler = async (req: Request, res: Response) => {
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
+};
+
+export const refresh = async (req: Request, res: Response) => {
+    const refreshToken = req.headers.refreshToken;
 };

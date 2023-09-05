@@ -17,7 +17,7 @@ export const getUser = async (
 
 export const signTokens = (user: User) => {
     const accessToken = signJwt(user, "accessTokenPrivateKey", {
-        expiresIn: 60_000,
+        expiresIn: "1d",
     });
     const refreshToken = signJwt(user, "refreshTokenPrivateKey", {
         expiresIn: "1d",
