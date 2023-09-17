@@ -8,7 +8,12 @@ import { verifyJwt } from "./utils/jwt";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+    cors({
+        origin: "https://frontend-review-portal.vercel.app",
+        optionsSuccess: 200,
+    }),
+);
 
 app.use("/api/auth", authRouter);
 // app.use(verifyJwt)
