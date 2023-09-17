@@ -17,7 +17,7 @@ export const createTagHandler = async (req: Request, res: Response) => {
 export const getTagsHandler = async (req: Request, res: Response) => {
     try {
         const tags = await getTags();
-        res.status(201).json({ data: tags });
+        res.status(200).json({ data: tags });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }

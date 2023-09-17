@@ -3,7 +3,7 @@ import express from "express";
 
 const router = express.Router();
 
-router.post("", createTagHandler);
 router.get("", getTagsHandler);
+router.post("", createTagHandler);
 
 export default router;
