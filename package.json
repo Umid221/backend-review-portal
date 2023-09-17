@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon",
-        "migrate": "prisma migrate dev"
+        "migrate": "prisma migrate dev",
+        "start": "nodemon"
     },
     "keywords": [],
     "author": "",
