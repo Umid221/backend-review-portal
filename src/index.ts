@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(
     cors({
         origin: "https://frontend-review-portal.vercel.app",
-        optionsSuccess: 200,
     }),
 );
 
